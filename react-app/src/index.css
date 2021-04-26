@@ -1,0 +1,30 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    background-color: white;
+    padding-top: 80px;
+}
+
+header, footer {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    background-color: lightgray;
+    color: black;
+    z-index: 999;
+}
+
+header {
+    top: 0;
+    height: 74px;
+    border-bottom: solid black 1px;
+    padding: 4px;
+}
+
+footer {
+    bottom: 0;
+    height: 18px;
+    font-size: 10px;
+    padding-top: 4px;
+    border-top: solid black 1px;
+}
