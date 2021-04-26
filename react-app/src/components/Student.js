@@ -61,28 +61,28 @@ const Student = ({ match, history }) => {
                     <label htmlFor='firstName'>First name:</label>
                     <input type='text'
                         name='firstName'
-                        value={student.name}
+                        value={student.firstName}
                         onChange={changeHandler} />
                 </div>
                 <div style={{ margin: '12px 0' }}>
                     <label htmlFor='lastName'>Last name:</label>
                     <input type='text'
                         name='lastName'
-                        value={student.points}
+                        value={student.lastName}
                         onChange={changeHandler} />
                 </div>
                 <div style={{ margin: '12px 0' }}>
                     <label htmlFor='yearOfBirth'>Year of Birth:</label>
                     <input type='text'
                         name='yearOfBirth'
-                        value={student.points}
+                        value={student.yearOfBirth}
                         onChange={changeHandler} />
                 </div>
                 <div style={{ margin: '12px 0' }}>
                     <label htmlFor='address'>Address:</label>
                     <input type='text'
                         name='address'
-                        value={student.points}
+                        value={student.address}
                         onChange={changeHandler} />
                 </div>
                 <hr />
