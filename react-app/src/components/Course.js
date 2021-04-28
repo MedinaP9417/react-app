@@ -9,6 +9,8 @@ const Course = ({match, history }) => {
         points: 0
     });
 
+    const [isCourseNameEmpty, setIsCourseNameEmpty] = useState(false);
+    const [isCoursePointsEmpty, setIsCoursePointsEmpty] = useState(false);
     useEffect(() => {
         if(id !== '0'){
             read('courses', id, data => {
@@ -29,13 +31,34 @@ const Course = ({match, history }) => {
     }
 
     const save = () => {
-       if(id === '0') {
+            if(id === '0') {
+                    if (!course.name) {
+                        setIsCourseNameEmpty(true);
+                        return;
+                    }
+                    if (!course.points) {
+                        setIsCoursePointsEmpty(true);
+                        return;
+                    }
            insert('courses', course, data => {
               if(data) return history.push('/courses');
               console.log('There was error during save data');
-              
+           
             }) 
        } else {
+           if (!course.name && !course.name) {
+               setIsCourseNameEmpty(true);
+               setIsCoursePointsEmpty(true);
+               return;
+           }
+           if (!course.name) {
+               setIsCourseNameEmpty(true);
+               return;
+           }
+           if (!course.points) {
+               setIsCoursePointsEmpty(true);
+               return;
+           }
            update('courses', id, course, data => {
                if (data) return history.push('/courses');
                console.log('There was error during save data');
@@ -50,6 +73,7 @@ const Course = ({match, history }) => {
 
     }
 
+    
     return (
     <div className='container'>
             <h2>Course</h2>
@@ -60,6 +84,7 @@ const Course = ({match, history }) => {
                            name='name' 
                            value={course.name}
                            onChange={changeHandler} />
+                    {isCourseNameEmpty && <p className="error">This field is required</p>}
                 </div>
                 <div style={{ margin: '12px 0' }}>
                     <label htmlFor='points'>Course points:</label>
@@ -67,6 +92,7 @@ const Course = ({match, history }) => {
                            name='points' 
                            value={course.points}
                            onChange={changeHandler} />
+                    {isCoursePointsEmpty && <p className="error">This field is required</p>}
                 </div>
                 <hr />
                 {id !== '0' && (
